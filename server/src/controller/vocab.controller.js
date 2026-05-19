@@ -59,3 +59,41 @@ export async function createPhrase(req, res){
     })
 
 }
+export async function getVocab(req, res){
+    try {
+        const userId = req.user.id
+
+        const allVocab = await VocabModel.find({
+            createdBy: userId
+        })
+
+        return res.status(200).json({
+            message: 'vocabs fetched successfully',
+            allVocab
+        })
+    } catch (error) {
+        console.log(error)
+        return res.status(400).json({
+            message: 'error'
+        })
+    }
+}
+export async function getPhrase(req,res) {
+     try {
+        const userId = req.user.id
+
+        const allPhrase = await PhraseModel.find({
+            createdBy: userId
+        })
+
+        return res.status(200).json({
+            message: 'phrases fetched successfully',
+            allPhrase
+        })
+    } catch (error) {
+        console.log(error)
+        return res.status(400).json({
+            message: 'error'
+        })
+    }
+}
