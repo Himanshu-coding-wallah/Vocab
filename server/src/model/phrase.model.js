@@ -22,4 +22,4 @@ const phraseSchema = new mongoose.Schema({
     }]
 })
 
-export const PhraseModel = mongoose.model("phrase", phraseSchema)
+export const PhraseModel = mongoose.model("Phrase", phraseSchema)
