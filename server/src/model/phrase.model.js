@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const phraseSchema = new mongoose.Schema({
-    phrase: {
+    word: {
         type: String,
         trim: true,
         required: true,
@@ -19,7 +19,11 @@ const phraseSchema = new mongoose.Schema({
             required: true,
             lowercase: true,
         }
-    }]
+    }],
+    createdBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    }
 })
 
 export const PhraseModel = mongoose.model("Phrase", phraseSchema)

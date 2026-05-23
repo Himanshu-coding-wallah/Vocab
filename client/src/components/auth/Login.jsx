@@ -27,7 +27,7 @@ const Login = () => {
   
           if (response.ok) {
               alert("Logged in successfully")
-              navigate('/get')
+              navigate('/getVocab')
           } else {
               alert(result.message)
           }

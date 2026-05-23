@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Register = () => {
     
@@ -9,6 +9,8 @@ const Register = () => {
         email: '',
         password: ''
     })
+
+    const navigate = useNavigate()
 
     const formHandler=async (e)=>{
         e.preventDefault()
@@ -28,6 +30,7 @@ const Register = () => {
   
           if (response.ok) {
               alert("Registered successfully")
+              Navigate("/getVocab")
           } else {
               alert(result.message)
           }

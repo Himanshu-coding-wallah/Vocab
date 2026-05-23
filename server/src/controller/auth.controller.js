@@ -58,6 +58,12 @@ export async function login(req, res){
     try {
         const user = await UserModel.findOne({email})
 
+        if(!user){
+            return res.status(400).json({
+                message: 'user not found'
+            })
+        }
+
         const checkPassword = bcrypt.compare(password, user.password)
     
         if(!checkPassword){

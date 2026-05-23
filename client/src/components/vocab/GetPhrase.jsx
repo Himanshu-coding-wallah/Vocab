@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const GetVocab = () => {
+const GetPhrase = () => {
 
     const navigate = useNavigate()
     const [allVocab, setAllVocab] = useState([])
@@ -15,7 +15,7 @@ const GetVocab = () => {
 
             try {
                 const response = await fetch(
-                    'http://localhost:3000/api/vocab/get-vocab',
+                    'http://localhost:3000/api/vocab/get-phrase',
                     {
                         method: "GET",
                         headers: {
@@ -24,10 +24,10 @@ const GetVocab = () => {
                         credentials: "include",
                     }
                 )
-
+                
                 const result = await response.json()
                 console.log(result)
-                const sortedData = result.allVocab.sort((a, b) =>
+                const sortedData = result.allPhrase.sort((a, b) =>
                     a.word.localeCompare(b.word)
                 )
 
@@ -119,7 +119,7 @@ const GetVocab = () => {
                     <div className='flex gap-3'>
 
                         <button
-                        onClick={()=>(navigate('/createVocab'))}
+                        onClick={()=>(navigate('/createPhrase'))}
                         className='bg-blue-600 hover:bg-blue-700 transition text-white px-5 py-2 rounded-lg shadow'>
                             Add
                         </button>
@@ -153,8 +153,8 @@ const GetVocab = () => {
                             onChange={selectOpt}
                             className='bg-white border border-gray-300 rounded-lg px-4 py-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400'
                         >
-                            <option value="vocabulary">Vocabulary</option>
                             <option value="phrase">Phrase</option>
+                            <option value="vocabulary">Vocabulary</option>
                         </select>
 
                     </div>
@@ -238,11 +238,11 @@ const GetVocab = () => {
                         <div className='text-center mt-20'>
 
                             <h2 className='text-3xl font-bold text-gray-700 mb-3'>
-                                No Vocabulary Found
+                                No Phrases Found
                             </h2>
 
                             <p className='text-gray-500'>
-                                Start adding words to build your personal dictionary.
+                                Start adding phrases to build your personal dictionary.
                             </p>
 
                         </div>
@@ -313,4 +313,4 @@ const GetVocab = () => {
     )
 }
 
-export default GetVocab
+export default GetPhrase

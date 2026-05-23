@@ -31,9 +31,9 @@ export async function createVocab(req, res){
 
 }
 export async function createPhrase(req, res){
-    const {phrase, meaning} = req.body
+    const {word, meaning} = req.body
 
-    if(!phrase || meaning.length === 0 ){
+    if(!word || meaning.length === 0 ){
         return res.status(400).json({
             message: 'please enter details'
         })
@@ -48,7 +48,7 @@ export async function createPhrase(req, res){
     }
 
     const newphrase = await PhraseModel.create({
-        phrase,
+        word,
         meaning,
         createdBy: req.user.id
     })

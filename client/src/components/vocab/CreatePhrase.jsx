@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const CreateVocab = () => {
+const CreatePhrase = () => {
 
   const navigate = useNavigate()
 
@@ -24,7 +24,7 @@ const CreateVocab = () => {
     try {
 
       const response = await fetch(
-        "http://localhost:3000/api/vocab/create-vocab",
+        "http://localhost:3000/api/vocab/create-phrase",
         {
           method: "POST",
           headers: {
@@ -41,8 +41,8 @@ const CreateVocab = () => {
 
       if(response.ok){
 
-        alert("Vocabulary created successfully")
-        navigate("/getVocab")
+        alert("Phrase created successfully")
+        navigate("/getPhrase")
 
       }else{
 
@@ -163,11 +163,11 @@ const CreateVocab = () => {
         <div className='mb-8 text-center'>
 
           <h1 className='text-4xl font-bold text-blue-700 mb-2'>
-            Create Vocabulary
+            Create Phrase
           </h1>
 
           <p className='text-gray-500 text-lg'>
-            Add a new word to your personal dictionary
+            Add a new phrase to your personal dictionary
           </p>
 
         </div>
@@ -279,7 +279,7 @@ const CreateVocab = () => {
               type='submit'
               className='flex-1 bg-blue-600 hover:bg-blue-700 transition duration-200 text-white py-3 rounded-xl font-semibold shadow-lg'
             >
-              Save Vocabulary
+              Save Phrase
             </button>
 
             <button
@@ -291,7 +291,7 @@ const CreateVocab = () => {
             </button>
 
             <button
-              onClick={() => navigate("/getVocab")}
+              onClick={() => navigate("/getPhrase")}
               type='button'
               className='flex-1 bg-gray-200 hover:bg-gray-300 transition duration-200 text-gray-700 py-3 rounded-xl font-semibold'
             >
@@ -308,4 +308,4 @@ const CreateVocab = () => {
   )
 }
 
-export default CreateVocab
+export default CreatePhrase
